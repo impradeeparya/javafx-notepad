@@ -21,11 +21,12 @@ public class NotepadLauncher extends Application {
         boolean isPropertiesLoaded = instance.init();
 
         if (isPropertiesLoaded) {
-            SplitPane root = NotepadUtils.getRootPane();
+            SplitPane root = NotepadUtils.INSTANCE.getRootPane();
             NotepadUtils.addMenuBar(root);
 
             Scene scene = new Scene(root, 500, 600);
 
+            NotepadUtils.INSTANCE.setPrimaryStage(primaryStage);
             primaryStage.setTitle(instance.getValueOf("application.title"));
             primaryStage.setScene(scene);
             primaryStage.show();
