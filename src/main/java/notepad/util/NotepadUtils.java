@@ -10,11 +10,11 @@ import javafx.scene.control.*;
  * Created by pradeep on 1/1/17.
  */
 public class NotepadUtils {
+    private static SplitPane splitPane = new SplitPane();
+
     private NotepadUtils() {
 
     }
-
-    private static SplitPane splitPane = new SplitPane();
 
     public static SplitPane getRootPane() {
         splitPane.setOrientation(Orientation.VERTICAL);
@@ -30,12 +30,12 @@ public class NotepadUtils {
     private static Menu getFileMenu() {
         Menu fileMenu = new Menu("File");
 
-        MenuItem newMenuItem = new MenuItem("New");
+        MenuItem newMenuItem = new MenuItem(PropertyConfigurator.INSTANCE.getValueOf("menu.file.new"));
         newMenuItem.setOnAction(actionEvent -> addTextArea());
 
-        MenuItem saveMenuItem = new MenuItem("Save");
+        MenuItem saveMenuItem = new MenuItem(PropertyConfigurator.INSTANCE.getValueOf("menu.file.save"));
 
-        MenuItem exitMenuItem = new MenuItem("Quit");
+        MenuItem exitMenuItem = new MenuItem(PropertyConfigurator.INSTANCE.getValueOf("menu.file.exit"));
         exitMenuItem.setOnAction(actionEvent -> Platform.exit());
 
         fileMenu.getItems().addAll(newMenuItem, saveMenuItem, exitMenuItem);
@@ -54,7 +54,7 @@ public class NotepadUtils {
             tabPane = (TabPane) splitPane.getItems().get(1);
         }
         Tab tab = new Tab();
-        tab.setText("new");
+        tab.setText(PropertyConfigurator.INSTANCE.getValueOf("new.file.title"));
         TextArea textArea = new TextArea();
         tab.setContent(textArea);
         tabPane.getTabs().add(tab);
