@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.geometry.Orientation;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -105,6 +106,7 @@ public enum NotepadUtils {
         TextArea textArea = new TextArea();
         tab.setContent(textArea);
         tabPane.getTabs().add(tab);
+        tabPane.getSelectionModel().select(tab);
     }
 
     private static TabPane getTabPane() {
@@ -117,6 +119,10 @@ public enum NotepadUtils {
             tabPane = (TabPane) splitPane.getItems().get(1);
         }
         return tabPane;
+    }
+
+    public static <T> void setStyleSheet(Scene scene, Class<T> appClass) {
+        scene.getStylesheets().add(appClass.getResource(File.separator + "application.css").toExternalForm());
     }
 
 }

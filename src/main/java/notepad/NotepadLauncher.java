@@ -25,6 +25,7 @@ public class NotepadLauncher extends Application {
             NotepadUtils.addMenuBar(root);
 
             Scene scene = new Scene(root, 500, 600);
+            NotepadUtils.setStyleSheet(scene, NotepadLauncher.class);
 
             NotepadUtils.INSTANCE.setPrimaryStage(primaryStage);
             primaryStage.setTitle(instance.getValueOf("application.title"));
